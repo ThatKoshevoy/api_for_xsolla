@@ -43,12 +43,12 @@ function createNew(req,res){
   var object = {
     SKU: req.body.SKU, Title: req.body.Title, Type: req.body.Type, Price: req.body.price
   };
-  catalog.createNew(degrad, function(err,result){
+  catalog.createNew(object, function(err,result){
     if (err){
       console.log(err);
       return res.sendStatus(500);
     };
-  res.send(degrad);
+  res.send(object);
   });
 };
 
