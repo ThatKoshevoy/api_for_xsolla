@@ -62,8 +62,8 @@ function change(req,res){
   });
 };
 
-function changeByName(req,res){
-  catalog.changeByName(req.params.SKU, {name:req.body.SKU}, function(err,result){
+function changeBySKU(req,res){
+  catalog.changeBySKU(req.params.SKU, {name:req.body.SKU}, function(err,result){
     if (err){
       console.log(err);
       return res.sendStatus(500);
@@ -82,8 +82,8 @@ function deleteOne(req,res){
   });
 };
 
-function deleteByName(req,res){
-  catalog.deleteByName(req.params.SKU, function(err,result){
+function deleteBySKU(req,res){
+  catalog.deleteBySKU(req.params.SKU, function(err,result){
     if (err){
       console.log(err);
       return res.sendStatus(500);
