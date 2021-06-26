@@ -11,10 +11,10 @@ exp.use(bodyParser.urlencoded({extenden : true}));
 
 exp.get('/catalog', catalogController.all);
 exp.get('/catalog/:id', catalogController.findByID);
-exp.get('/catalog/:squ/i', catalogController.findBySKU);
+exp.get('/catalog/:SKU/i', catalogController.findBySKU);
 exp.post('/catalog', catalogController.createNew);
 exp.put('/catalog/:id', catalogController.change);
-exp.put('/catalog/:sku/i', catalogController.changeBySKU);
+exp.put('/catalog/:SKU/i', catalogController.changeBySKU);
 exp.delete('/catalog/:id', catalogController.deleteOne);
 exp.delete('/catalog/:SKU/i', catalogController.deleteBySKU);
 
