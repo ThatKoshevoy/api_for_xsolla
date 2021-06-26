@@ -53,7 +53,7 @@ function createNew(req,res){
 };
 
 function change(req,res){
-  catalog.change(req.params.id, {name: req.body.SKU}, function(err,result){
+  catalog.change(req.params.id, {SKU: req.body.SKU} {Title: req.body.Title}, {Type: req.body.Type} {Price: req.body.Price}, function(err,result){
     if (err) {
       console.log(err);
       return res.sendStatus(500);
@@ -63,7 +63,7 @@ function change(req,res){
 };
 
 function changeBySKU(req,res){
-  catalog.changeBySKU(req.params.SKU, {name:req.body.SKU}, function(err,result){
+  catalog.changeBySKU(req.params.SKU, {SKU: req.body.SKU}, {Title: req.body.Title}, {Type: req.body.Type} {Price: req.body.Price}, function(err,result){
     if (err){
       console.log(err);
       return res.sendStatus(500);

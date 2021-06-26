@@ -41,9 +41,9 @@ function change(id, SKU, cb){
     });
 };
 
-function changeBySKU(nameOld, nameNew, cb){
+function changeBySKU(SKUOld, SKUNew, TitleNEW, TypeNEW, PriceNEW, cb){
   db.get().collection('catalog').updateOne(
-    {name: nameOld}, {$set: nameNew}, function(err,result){
+    {name: SKUOld}, {$set: {SKU: SKUNew, Title: TitleNew, Type: TypeNew, Price: PriceNEW}}, function(err,result){
       cb(err,result);
     });
 };
