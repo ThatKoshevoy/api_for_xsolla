@@ -63,7 +63,7 @@ function change(req,res){
 };
 
 function changeBySKU(req,res){
-  catalog.changeBySKU(req.params.SKU, {SKU: req.body.SKU ,Title: req.body.Title}, {Type: req.body.Type}, {Price: req.body.Price}, function(err,result){
+  catalog.changeBySKU(req.params.SKU, {SKU: req.body.SKU},{Title: req.body.Title}, {Type: req.body.Type}, {Price: req.body.Price}, function(err,result){
     if (err){
       console.log(err);
       return res.sendStatus(500);
