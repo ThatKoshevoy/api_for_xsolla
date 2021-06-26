@@ -11,12 +11,12 @@ exp.use(bodyParser.urlencoded({extenden : true}));
 
 exp.get('/catalog', catalogController.all);
 exp.get('/catalog/:id', catalogController.findByID);
-exp.get('/catalog/:squ/i', catalogController.findByName);
+exp.get('/catalog/:squ/i', catalogController.findBySKU);
 exp.post('/catalog', catalogController.createNew);
 exp.put('/catalog/:id', catalogController.change);
-exp.put('/catalog/:sku/i', catalogController.changeByName);
+exp.put('/catalog/:sku/i', catalogController.changeBySKU);
 exp.delete('/catalog/:id', catalogController.deleteOne);
-exp.delete('/catalog/:SKU/i', catalogController.deleteByName);
+exp.delete('/catalog/:SKU/i', catalogController.deleteBySKU);
 
 db.connect('mongodb+srv://koshevoy:Aj3MD5OK@apiforxsolla.bca1h.mongodb.net/apiforxsolla?retryWrites=true&w=majority', function(err){
   if (err){
