@@ -41,7 +41,7 @@ function findBySKU(req,res){
 
 function createNew(req,res){
   var object = {
-    SKU: req.body.SKU, Title: req.body.Title, Type: req.body.Type, Price: req.body.price
+    SKU: req.body.SKU, Title: req.body.Title, Type: req.body.Type, Price: req.body.Price
   };
   catalog.createNew(object, function(err,result){
     if (err){
