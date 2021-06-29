@@ -35,7 +35,6 @@ function createNew(object, cb){
 };
 
 function change(id, SKUNew, TitleNew, TypeNew, PriceNew, cb){
-
   db.get().collection('catalog').updateOne(
     {_id: ObjectID(id)}, {$set: {SKU: SKUNew, Title: TitleNew, Type: TypeNew, Price: PriceNew}}, function(err,result) {
       cb(err,result);
@@ -43,12 +42,8 @@ function change(id, SKUNew, TitleNew, TypeNew, PriceNew, cb){
 };
 
 function changeBySKU(SKUOld, SKUNew, TitleNew, TypeNew, PriceNew, cb){
-  var object = new object();
-  if (SKUNew !== "") {
-    object = {SKU: SKUNew};
-  };
   db.get().collection('catalog').updateOne(
-    {SKU: SKUOld}, {$set: object}, function(err,result){
+    {SKU: SKUOld}, {$set: {SKU: SKUNew, Title: TitleNew, Type: TypeNew, Price: PriceNew}}, function(err,result){
       cb(err,result);
     });
 };
