@@ -46,6 +46,10 @@ function change(id, SKUNew, TitleNew, TypeNew, PriceNew, cb){
 };
 
 function changeBySKU(SKUOld, SKUNew, TitleNew, TypeNew, PriceNew, cb){
+  old_data = findBySKU(SKUOld, cb);
+  if (SKUNew == null){
+    SKUNew = old_data["SKU"]
+  }
   db.get().collection('catalog').updateOne(
     {SKU: SKUOld}, {$set: {SKU: SKUNew, Title: TitleNew, Type: TypeNew, Price: PriceNew}}, function(err,result){
       cb(err,result);
