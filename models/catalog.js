@@ -37,8 +37,8 @@ function createNew(object, cb){
 function change(id, SKUNew, TitleNew, TypeNew, PriceNew, cb){
   old_data = findByID(id, cb);
   if (SKUNew == null){
-    SKUNew = old_data["SKU"]
-  }
+    SKUNew = old_data["SKU"];
+  };
   db.get().collection('catalog').updateOne(
     {_id: ObjectID(id)}, {$set: {SKU: SKUNew, Title: TitleNew, Type: TypeNew, Price: PriceNew}}, function(err,result) {
       cb(err,result);
@@ -47,9 +47,9 @@ function change(id, SKUNew, TitleNew, TypeNew, PriceNew, cb){
 
 function changeBySKU(SKUOld, SKUNew, TitleNew, TypeNew, PriceNew, cb){
   old_data = findBySKU(SKUOld, cb);
-  if (SKUNew == null){
-    SKUNew = old_data["SKU"]
-  }
+  if (SKUNew == ""){
+    SKUNew = old_data["SKU"];
+  };
   db.get().collection('catalog').updateOne(
     {SKU: SKUOld}, {$set: {SKU: SKUNew, Title: TitleNew, Type: TypeNew, Price: PriceNew}}, function(err,result){
       cb(err,result);
