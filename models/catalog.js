@@ -46,7 +46,7 @@ function change(id, SKUNew, TitleNew, TypeNew, PriceNew, cb){
 };
 
 function changeBySKU(SKUOld, SKUNew, TitleNew, TypeNew, PriceNew, cb){
-  old_data = findBySKU(SKUOld, cb);
+  old_data = exp.get('/catalog/:SKU/i', findByID);
   if (SKUNew == ""){
     SKUNew = old_data["SKU"];
   };
