@@ -43,12 +43,8 @@ function change(id, SKUNew, TitleNew, TypeNew, PriceNew, cb){
 };
 
 function changeBySKU(SKUOld, SKUNew, TitleNew, TypeNew, PriceNew, cb){
-  var object = {};
-  if (SKUOld !== "") {
-    object += {SKU: SKUOld};
-  };
   db.get().collection('catalog').updateOne(
-    {SKU: SKUOld}, {$set: {SKU: SKUNew, Title: TitleNew, Type: TypeNew, Price: PriceNew}}, function(err,result){
+    {SKU: SKUOld}, {$set: object}, function(err,result){
       cb(err,result);
     });
 };
