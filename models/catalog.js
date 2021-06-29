@@ -34,9 +34,13 @@ function createNew(object, cb){
   });
 };
 
-function change(id, SKU, cb){
+function change(id, SKUNew, TitleNew, TypeNew, PriceNew, cb){
+  old_data = findByID(id, cb);
+  if (SKUNew == null){
+    SKUNew = old_data["SKU"]
+  }
   db.get().collection('catalog').updateOne(
-    {_id: ObjectID(id)}, {$set: name}, function(err,result) {
+    {_id: ObjectID(id)}, {$set: {SKU: SKUNew, Title: TitleNew, Type: TypeNew, Price: PriceNew}}, function(err,result) {
       cb(err,result);
     });
 };

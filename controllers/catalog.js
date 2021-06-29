@@ -53,7 +53,7 @@ function createNew(req,res){
 };
 
 function change(req,res){
-  catalog.change(req.params.SKU, {SKU: req.body.SKU}, {Title: req.body.Title}, {Type: req.body.Type}, {Price: req.body.Price}, function(err,result){
+  catalog.change(req.params.id, req.body.SKU, req.body.Title, req.body.Type, req.body.Price, function(err,result){
     if (err) {
       console.log(err);
       return res.sendStatus(500);
