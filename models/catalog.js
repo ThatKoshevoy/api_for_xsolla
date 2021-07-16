@@ -44,6 +44,7 @@ function change(id, SKUNew, TitleNew, TypeNew, PriceNew, cb){
 function changeBySKU(SKUOld, SKUNew, TitleNew, TypeNew, PriceNew, cb){
   db.get().collection('catalog').updateOne(
     {SKU: SKUOld}, {$set: {SKU: SKUNew, Title: TitleNew, Type: TypeNew, Price: PriceNew}}, function(err,result){
+      console.log(product.constructor);
       cb(err,result);
     });
 };
