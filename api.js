@@ -12,6 +12,7 @@ exp.use(bodyParser.urlencoded({extenden : true}));
 exp.get('/catalog', catalogController.all);
 exp.get('/catalog/:id', catalogController.findByID);
 exp.get('/catalog/:SKU/i', catalogController.findBySKU);
+exp.get('/catalog/:type/t', catalogController.findByType);
 exp.post('/catalog', catalogController.createNew);
 exp.put('/catalog/:id', catalogController.change);
 exp.put('/catalog/:SKU/i', catalogController.changeBySKU);

@@ -5,6 +5,7 @@ exports.all = all;
 exports.findByID = findByID;
 exports.findBySKU = findBySKU;
 exports.createNew = createNew;
+exports.findByType = findByType;
 exports.change = change;
 exports.changeBySKU = changeBySKU;
 exports.deleteOne = deleteOne;
@@ -25,6 +26,12 @@ function findByID(id,cb){
 function findBySKU(SKU,cb){
   db.get().collection('catalog').findOne({SKU: SKU}, function(err,doc){
     cb(err,doc);
+  });
+};
+
+function findByType(cb){
+  db.get().collection('catalog').find({"type": req.params.type}).toArray(function(err,docs){
+    cb(err,docs);
   });
 };
 

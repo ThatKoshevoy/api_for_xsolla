@@ -3,6 +3,7 @@ var catalog = require("../models/catalog.js");
 exports.all = all;
 exports.findByID = findByID;
 exports.findBySKU = findBySKU;
+exports.findByType = findByType;
 exports.createNew = createNew;
 exports.change = change;
 exports.changeBySKU = changeBySKU;
@@ -38,6 +39,18 @@ function findBySKU(req,res){
     res.send(doc);
   });
 };
+
+
+function findByType(req,res){
+  catalog.findByType(req.params.type,function(err,docs){
+    if (err){
+      console.log(err);
+      return res.sendStatus(500);
+    };
+    res.send(docs);
+  });
+};
+
 
 function createNew(req,res){
   var object = {
