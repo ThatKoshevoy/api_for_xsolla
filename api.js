@@ -24,6 +24,6 @@ db.connect('mongodb+srv://koshevoy:Aj3MD5OK@apiforxsolla.bca1h.mongodb.net/apifo
     return console.log(err);
   }
   exp.listen(PORT, () => {
-    console.log("its okay man, chill!");
+    console.log("its okay man, chill!!");
   });
 });
