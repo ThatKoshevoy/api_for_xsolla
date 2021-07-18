@@ -12,6 +12,7 @@ To develop the API, I used:
  * Node.JS
  * Express. 
  * MongoDB (The database is on their server)
+
  I also used the Heroku service for hosting, which currently hosts my API in a fully working state.
 
 ## Launching
