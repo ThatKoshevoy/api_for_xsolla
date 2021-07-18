@@ -1,4 +1,5 @@
 # api_for_xsolla 
+You can find a description of the task in test-task.md
 
 ## Description
 This API was developed by me for [Xsolla](https://xsolla.com/) School 2021.It is designed as a RESTful API and provides features to manage the database, such as deleting, modifying, viewing, and adding new items, in this case products, to the catalog for the e-commerce site.
