@@ -30,7 +30,7 @@ function findBySKU(SKU,cb){
 };
 
 function findByType(type,cb){
-  db.get().collection('catalog').find({"type": type}).toArray(function(err,docs){
+  db.get().collection('catalog').find({type: type}).toArray(function(err,docs){
     cb(err,docs);
   });
 };
