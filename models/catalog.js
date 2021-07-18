@@ -29,8 +29,8 @@ function findBySKU(SKU,cb){
   });
 };
 
-function findByType(cb){
-  db.get().collection('catalog').find({"type": req.params.type}).toArray(function(err,docs){
+function findByType(type,cb){
+  db.get().collection('catalog').find({"type": type}).toArray(function(err,docs){
     cb(err,docs);
   });
 };
