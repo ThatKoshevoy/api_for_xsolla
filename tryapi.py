@@ -1,9 +1,10 @@
 import requests
 
-def select(data):
+def select(url):
 	way = input("\n1 - Посмотреть всех, 2 - Поиск по ID, 3 - Поиск по артикулу, 4 - Выбрать по типу -- ")
 	if way == "1":
 		i = 0
+		data = requests.get(f"{url}").json()
 		while i < len(data):
 			print(f"{i+1}: \nИдентификатор - {data[i]['_id']}\nАртикул - {data[i]['SKU']}\nНазвание - {data[i]['Title']}\nТип товара - {data[i]['Type']}\nЦена - {data[i]['Price']}$\n")
 			i += 1
@@ -23,7 +24,6 @@ def select(data):
 			print("error 404: not found")
 	elif way == "4":
 		type = input("\nВведите тип товара -- ")
-		url = 'https://shopapiforxsolla.herokuapp.com/catalog'
 		data = requests.get(f"{url}/{type}/t").json()
 		try:
 			i = 0
@@ -35,7 +35,7 @@ def select(data):
 	else:
 		print("wrong")
 
-def insert():
+def insert(url):
 	object_SKU = input("\nВведите артикул товара -- ")
 	object_tilte = input("Введите название товара-- ")
 	object_type = input("Введите тип товара -- ")
@@ -43,7 +43,7 @@ def insert():
 	requests.post(url, data={"SKU": object_SKU, "Title": object_tilte, "Type": object_type, "Price": object_price}, 
 				json={"SKU": object_SKU, "Title": object_tilte, "Type": object_type, "Price": object_price})
 
-def update():
+def update(url):
 	way = input("\n1 - Изменить по ID, 2 - Изменить по артикулу -- ")
 	if way == "1":
 		id_u = input("\nВведите ID товара которого хотите изменить -- ")
@@ -62,7 +62,7 @@ def update():
 		requests.put(f"{url}/{oldSKU}/i", data={"SKU": newSKU, "Title": newTitle, "Type": newType, "Price": newPrice}, json={"SKU": newSKU, "Title": newTitle, "Type": newType, "Price": newPrice})
 
 		
-def delete():
+def delete(url):
 	way = input("\n1 - Удалить по ID, 2 - Удалить по артикулу -- ")
 	if way == "1":
 		id_u = input("\nВведите ID товара который хотите удалить -- ")	
@@ -71,17 +71,17 @@ def delete():
 		name = input("\nВведите артикул товара который хотите удалить -- ")	
 		requests.delete(f"{url}/{name}/i")
 
+
+url = 'https://shopapiforxsolla.herokuapp.com/catalog'
 while True:
-	url = 'https://shopapiforxsolla.herokuapp.com/catalog'
-	data = requests.get(f"{url}").json()
 	way = input("1 - Просмотр, 2 - Добавить, 3 - Изменить, 4 - Удалить -- ")
 	if way == "1":
-		select(data)
+		select(url)
 	elif way == "2":
-		insert()
+		insert(url)
 	elif way == "3":
-		update()
+		update(url)
 	elif way == "4":
-		delete()
+		delete(url)
 	else:
 		print("wrong")
